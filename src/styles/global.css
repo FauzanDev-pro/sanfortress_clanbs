@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #ffa500;
+  --secondary: #ffcd3c;
+  --dark: #1a1a1a;
+  --light: #ffffff;
+}
+
+@layer base {
+  body {
+    @apply bg-light text-dark;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-secondary 
+           text-dark font-semibold py-2 px-6 rounded-lg
+           hover:opacity-90 transition-opacity;
+  }
+
+  .section-padding {
+    @apply py-20 px-6;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+/* Loading Animation */
+.loader {
+  @apply fixed inset-0 z-50 flex items-center justify-center bg-dark/50 backdrop-blur-sm;
+}
+
+.loader__spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--light);
+  border-bottom-color: var(--primary);
+  border-radius: 50%;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Page Transitions */
+.page-transition {
+  @apply opacity-0 transition-opacity duration-300;
+}
+
+.page-transition.loaded {
+  @apply opacity-100;
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
